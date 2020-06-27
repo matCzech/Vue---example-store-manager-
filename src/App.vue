@@ -1,28 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+      <TheAddMultimeterPanel/>
+      <AboutMultimeterPanel v-for="multimeter in multimeters"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  import TheAddMultimeterPanel from './components/TheAddMultimeterPanel.vue';
+  import AboutMultimeterPanel from './components/AboutMultimeterPanel.vue';
+  export default {
+    name: 'app',
+    components: {
+        TheAddMultimeterPanel,
+        AboutMultimeterPanel
+    },
+    data: () => ({
+      multimeters:[
+        {
+          name: 'Fluke',
+          pseudo: '97',
+          hp: 120,
+          mp: 890
+        },
+        {
+          name: 'UNI-T',
+          pseudo: 'UT 33C',
+          hp: 690,
+          mp: 80
+        }
+      ]
+    })
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #app{
+    padding:20px;
+  }
 </style>
