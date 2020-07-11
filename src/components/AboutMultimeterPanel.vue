@@ -8,14 +8,32 @@
             </div>
           </div>
           <div class="panel panel-body">
-            <div class="input-group">
-                  <span class="input-group-addon margin-bottom">Nazwa</span>
-                  <input type="text" v-model="name" class="form-control" placeholder="Nazwa">
-            </div>
-            <div class="input-group">
-                  <span class="input-group-addon margin-bottom">Model</span>
-                  <input type="text" v-model="model" class="form-control" placeholder="Model">
-          </div>            
+            <div class="col-md-6">
+              <div class="input-group margin-bottom">
+                    <span class="input-group-addon"><em>Marka</em></span>
+                    <span class="input-group-addon"><b>{{name}}</b></span>
+              </div>
+              <div class="input-group margin-bottom">
+                    <span class="input-group-addon"><em>Model</em></span>
+                    <span class="input-group-addon"><b>{{model}}</b></span>
+              </div>  
+          </div> 
+          <div class="margin-bottom row">
+            <div class="col-md-6">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-danger progress-bar-striped" role="progress-bar" style="width: 100%;">
+                      <b>{{aviailability}}</b>{{aviailability}}
+                    </div>
+                </div>
+            </div>  
+            <div class="col-md-6">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-primary progress-bar-striped" role="progress-bar" style="width: 100%;">
+                      <b>{{state}}</b>{{state}}
+                    </div>
+                </div>
+            </div>  
+          </div>      
         </div>
       </div>
     </div>
@@ -23,9 +41,18 @@
 
 <script>
   export default {
-      data: () => ({
+      props: {
+          name: String,
+          model: String,
+          aviailability: Number,
+          state: Number
+      },
+      methods: {
+          remove(){
+            this.$emit('remove', this.name);
+          }
+      }
 
-      })
   }
 </script>
 
